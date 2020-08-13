@@ -14,7 +14,7 @@ void printLinkedList(struct Node* n){
 }
 
 /* add to the head of the linked list */
-void push(struct Node* headRef, int new_data){
+void push(struct Node** headRef, int new_data){
     /* create a new node */
     struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
     /* assign new node the data */
@@ -23,6 +23,54 @@ void push(struct Node* headRef, int new_data){
     new_node->next = (*headRef);
     /* new node as new head */
     (*headRef) = new_node;
+}
+
+void pop(struct Node** headRef){
+    /* Check if the linked list is empty */
+    if(headRef == NULL){
+        printf("Linked List is empty\n");
+        return;
+    } else {
+        /* Store the reference of head */
+        struct Node* temp = *headRef;
+        /* assign the head pointer to the next node */
+        *headRef = temp->next;
+        /* free the memory at the previous head */
+        free(temp);
+        return;
+    }
+}
+
+void deleteNode(struct Node** headRef, int key){
+    /* double pointer store the head and previous node */
+    struct Node* temp = *headRef, *prev;
+    /* check if the head pointer is currently null */
+    if (temp == NULL){
+        printf("Linked List is empty\n");
+        return;
+        /* check if the head pointer is the key we want to delete */
+    } else if (temp != NULL && temp->data == key){
+        /* store the new head at the current head pointer */
+        *headRef = temp->next;
+        /* free up the memory at the current head */
+        free(temp);
+        return;
+    } else {
+        /* find the key we want to delete */
+        while (temp != NULL && temp->data != key){
+            prev = temp;
+            temp = temp->next;
+        }
+        /* if we cant find the key in the linked list */
+        if (temp == NULL){
+            printf("Key is not found in linked list");
+            return;
+        }
+        /* if we do find it, set the previous next to the current (temp) next */
+        prev->next = temp->next;
+        /* free up the memory at the deleted node */
+        free(temp);
+    }
 }
 
 void insertAfter(struct Node* prevNode, int new_data){
@@ -40,7 +88,7 @@ void insertAfter(struct Node* prevNode, int new_data){
     prevNode -> next = new_node;
 }
 
-void append(struct Node* headRef, int new_data){
+void append(struct Node** headRef, int new_data){
     /* create a new node */
     struct Node* new_node = (struct Node*) malloc(sizeof(struct Node));
     /* pointer for last node (starts from the head) */
@@ -63,13 +111,12 @@ void append(struct Node* headRef, int new_data){
     return;
 }
 
-
 int main(){
     
     struct Node* head = NULL; 
     struct Node* second = NULL; 
     struct Node* third = NULL; 
-  
+
     // malloc (size_t) allocates request memory and returns a pointer
     head = (struct Node*)malloc(sizeof(struct Node)); 
     second = (struct Node*)malloc(sizeof(struct Node)); 
@@ -84,6 +131,13 @@ int main(){
     third->data = 3;
     third->next = NULL; //termiante here since no pointer left to go to
 
+
+    push(&head, 20);
+    insertAfter(head, 30);
+    printLinkedList(head);
+    printf("\n");
+    pop(&head);
+    deleteNode(&head, 2);
     printLinkedList(head);
 
     return 0;
