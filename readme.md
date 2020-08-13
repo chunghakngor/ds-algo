@@ -1,6 +1,7 @@
 ## Learning C
 
 **Algorithms:**
+
 Graphs:
 - [ ] BFS
 - [ ] DFS
@@ -18,6 +19,7 @@ Strongly Connected Components:
 - [ ] Kosaruju
 
 **Data Structures:**
+
 Linked Lists:
 - [x] Singly
 - [x] Doubled
