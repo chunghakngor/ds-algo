@@ -1,6 +1,6 @@
 ## Learning C
 
-Algorithms:
+**Algorithms:**
 Graphs:
 - [ ] BFS
 - [ ] DFS
@@ -17,8 +17,7 @@ Spanning Tree:
 Strongly Connected Components:
 - [ ] Kosaruju
 
-
-Data Structures:
+**Data Structures:**
 Linked Lists:
 - [x] Singly
 - [x] Doubled
