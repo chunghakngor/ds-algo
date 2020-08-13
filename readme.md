@@ -20,5 +20,5 @@ Strongly Connected Components:
 
 Data Structures:
 Linked Lists:
-- [ ] Singly
-- [ ] Doubled
+- [x] Singly
+- [x] Doubled
