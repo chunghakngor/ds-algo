@@ -1,4 +1,4 @@
-## Learning C/C++
+## Preparation Material for Interviews
 
 **Algorithms:**
 
@@ -23,3 +23,6 @@ Strongly Connected Components:
 Linked Lists:
 - [x] Singly
 - [x] Doubled
+
+
+Previously used for learning C/C++
