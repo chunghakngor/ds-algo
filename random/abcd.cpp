@@ -3,8 +3,8 @@
 #include <math.h>
 // for runtime calc
 #include <time.h>
-#include <map>
-#include <tuple>
+#include <list>
+#include <unordered_map> 
 
 using namespace std;
 
@@ -12,7 +12,7 @@ using namespace std;
 
 // basic brute force approach
 // int main(){
-// 	int n = 10;
+// 	int n = 100;
 // 	clock_t tStart = clock();
 // 	for (int a = 1; a < n; a++){
 // 		for (int b = 1; b < n; b++){
@@ -31,7 +31,7 @@ using namespace std;
 
 // attempt 2
 // int main(){
-// 	int n = 10;
+// 	int n = 100;
 // 	clock_t tStart = clock();
 // 	for (int a = 1; a < n; a++){
 // 		for (int b = 1; b < n; b++){
@@ -51,7 +51,7 @@ using namespace std;
 
 // attempt 3
 // int main(){
-// 	int n = 10;
+// 	int n = 1000;
 // 	clock_t tStart = clock();
 // 	for (int a = 1; a < n; a++){
 // 		for (int b = 1; b < n; b++){
@@ -70,17 +70,15 @@ using namespace std;
 
 // attempt 4
 int main(){
-	int n = 10;
-	std::map<int, std::tuple> hash_table;
+	int n = 1000;
+	unordered_map<int,list<pair<int,int>>> hash_map = {};
 	clock_t tStart = clock();
 	for (int c = 1; c < n; c++){
 		for (int d = 1; d < n; d++){
 			int result = pow(c, 3) + pow(d, 3);
-			hash_table.insert(result, std::make_tuple(c, d));
+			hash_map[result] = std::make_pair(c, d);
 		}
 	}
-
-
 	printf("Time taken: %.10fs\n", (double)(clock() - tStart)/CLOCKS_PER_SEC);
 	return 0;
 }
